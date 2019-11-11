@@ -1,0 +1,77 @@
+I. Definition
+	1. The digital image processing: Xử lý ảnh số, có 2 bước: Sampling and Quantization (Lượng tử hóa)
+	2. Khái niệm các chiều không gian: 2 chiều, 3 chiều, 4 chiều (thêm chiều thời gian)
+II. Các khái niệm cơ bản
+	1. Pixel: Đơn vị nhỏ nhất phân chia ảnh
+	2. Bits Per Pixel: số màu / 1 pixel
+	3. Type of image: - Black and white format
+				   - 8 bit color format (Grayscale) - [one matrix]
+				   - 16 bit color format
+				   - 24 bit color format (8 bits R, 8 bits G, 8 bits B) - [3 matrices of R, G, B]
+III. Conversion - các khái niệm xử lý
+	1. Grayscale to RGB Conversion
+		- Average method: Grayscale = (R + G + B / 3)
+		- Luminosity method (Weighted method): Grayscale= ( (0.3 * R) + (0.59 * G) + (0.11 * B) ).
+	2. Sampling: Lấy mẫu
+		- First step
+		- The number of sensors on a CCD array = number of pixels
+	3. Pixel resolution: 
+		- Full HD: (1920x1080)
+		- 4K: 	   (3840x2160)
+		- 8K:	   (7680x4320)
+	4. Zooming: two different steps
+		- S1: before taking an particular image (Hardware, lens,etc)
+		- S2: after taking an particular image (Argorithms)
+		* Optical Zoom vs [Digital Zoom]
+		- Method : Pixel replication, etc..
+	5. Quantization
+		- Quantization is opposite to sampling. It is done on y axis. 
+		When you are quantizing an image, you are actually dividing a signal into quanta(partitions).
+	6. Masks
+		- Mask is a filter
+		- 2 types: Linear Filter/ Frequence domain Filter
+		- Purposes:
+			+ Blurring and noise reduction
+			+ Edge detection and sharpness 
+
+	7. Convolution
+		- Instead of transfomation function, we use Convolution(*)
+		- Step:
+			+ Flip the mask (horizontally and vertically) only once
+			+ Slide the mask onto the image.
+			+ Multiply the corresponding elements and then add them
+			+ Repeat this procedure until all values of the image has been calculated.
+
+IV. Main part:
+	1. Edge Detection
+		- Some masks for edge detection
+			+ Prewitt Operator
+			+ Sobel Operator
+			+ Robinson Compass Masks
+			+ Krisch Compass Masks
+			+ Laplacian Operator.
+
+Preference: Operator
+	1. Prewitt Operator:
+		- Horizontal Edges
+			-1	-1	-1
+			 0	 0	 0
+			 1	 1	 1
+
+		- Vertical Edges
+			-1	0	1
+			-1	0	1
+			-1	0	1
+
+	2. Sobel Operator:
+		Similar to Prewitt Operator, but the weight can be changed to emphasizethe edge
+		- Horizontal Edges
+			-1	-2	-1
+			 0	 0	 0
+			 1	 2	 1
+
+		- Vertical Edges
+			-1	0	1
+			-2	0	2
+			-1	0	1
+
