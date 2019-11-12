@@ -1,4 +1,4 @@
-Step 1: Convert Image to hex file (cause Verilog can't read image file)
+Step 1: Convert Image to hex file = Matlab (cause Verilog can't read image file)
 		(kodim123.bmp => kodim123.hex)
 Step 2: Module for reading and processing image
 		- note: Output is proceeded in 2 pixels in parallel : odd and even (to make faster)
@@ -12,7 +12,10 @@ Step 3: Writing BMP file
 		- Define Header file
 		- Convert data
 
-
+Conclude: This project can not be synthensis on FPGA. => hard to show prototype
+		=> If possible, try to find another project in realtime 
+		Option 1: HLS with Sobel
+		Option 2: Simple Project with Verilog (Timer)
 
 Q/A:
 1. Question: Blocking vs Non Blocking Assignment???
