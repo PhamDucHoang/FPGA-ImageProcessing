@@ -1,0 +1,30 @@
+Step 1: Convert Image to hex file (cause Verilog can't read image file)
+		(kodim123.bmp => kodim123.hex)
+Step 2: Module for reading and processing image
+		- note: Output is proceeded in 2 pixels in parallel : odd and even (to make faster)
+		- Sequence: 
+			+ Reading Data from input file
+			+ Begin to read image file once reset was high by creating a starting pulse (start)
+			+ State Transition (IDLE . VSYNC . HSYNC . DATA)
+			+ Counting for time period of vsync, hsync, data processing
+			+ Image Processing
+Step 3: Writing BMP file
+		- Define Header file
+		- Convert data
+
+
+
+Q/A:
+1. Question: Blocking vs Non Blocking Assignment???
+	Ans: - Blocking assigment 		: Use for combination logic (AND, OR, NOT)
+	 	 - Non-blocking assignment  : Use for sequential logic - FlipFlop
+2. Question : always @(*) ????
+	Ans: Whenever inputs change
+	always @(*) begin
+	 ctrl_vsync_run = 0;
+	 ctrl_hsync_run = 0;
+	 ctrl_data_run  = 0;
+	end
+3. Question : how to declare the frequence of clock
+4. Question : Do not understand HSYNC & VSYNC
+5. Q: Why FPGA has accurate clock?
