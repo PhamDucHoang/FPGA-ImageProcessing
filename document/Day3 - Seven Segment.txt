@@ -1,0 +1,13 @@
+7 Segment LED :
+
+1. The Basys 3 FPGA has a clock source of 100MHz
+	=> Calculate period time to refresh timer 20bit
+Q/A: How to declare the frequence of clock signal?
+	 Guess: Connect input clock in the constraint file to generate clock pulse
+Q/A: "assign" mean "wiring"?
+2. There are 2 timers use in this project:
+	1. Timer to count 1 second
+	2. Timer to count each 2.5(ms) to activate sequently LED
+	*** Processing in parallel 「いいですね！」
+
+HOW TO CONNECT THROUGH PMOD => just GPIO
