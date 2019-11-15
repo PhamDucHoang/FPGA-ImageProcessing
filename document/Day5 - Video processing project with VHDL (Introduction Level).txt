@@ -1,0 +1,18 @@
+http://miscircuitos.com/video-processing-fpga-zybo-using-vhdl/
+
+Video processing in the Zybo board
+
+I. Compare FPGA vs processor
+	1. FPGA processing with VHDL
+		- Low abstraction level video processing
+		- High speed and parallel computing High frame rate and resolution possible
+	2. Software processing with ARM processor
+		- Low, mid or high abstraction level video processing
+		- Processing speed limited by the processor and possible bottle neck on the processor low frame rate and resolution
+
+II. Implementation
+	1. Vivado block design
+		- Dvi2rgb: conversion from the video input of the HDMI into 24-bits RGB video
+		- Rgb2vga: converts the raw input video signal into VGA output
+		- Processing_system7: Special block, contains the configuration of the processing system of the Zynq.
+		- VideoProcessing: user customize
