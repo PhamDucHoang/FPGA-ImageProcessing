@@ -1,0 +1,6 @@
+Verilog HDL: A Guide to Digital Design and Synthesis, 2nd Ed.
+Part 1: Basic Verilog Topics
+	Chapter 1. Overview of Digital Design with Verilog HDL
+	Chapter 2. Hierarchical Modeling Concepts  
+	-------------------- đọc lại flipflop	
+	=> hnay sếp ngồi gần ko đọc vớ vẩn được :))
