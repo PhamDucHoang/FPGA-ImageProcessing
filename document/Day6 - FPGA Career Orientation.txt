@@ -1,0 +1,70 @@
+Hôm nay muốn có thêm chút động lực để học và theo FPGA cho ra trò nên đầu tiên sẽ 
+liệt kê các Adv/Dis của FPGA và tìm hiểu về tương lai của FPGA vs GPU
+
+Phần 1: Về tương lai FPGA
+I. Khách quan - Các quan điểm trên Internet (thu gom mang tính chất bợ đít FPGA)
+Tổng hợp comment:
+	1. Good points
+		 https://tinhte.vn/threads/nvidia-ra-mat-tesla-t4-cho-nen-tang-may-chu-tri-tue-nhan-tao.2853595/
+		---Trong cuộc đua phần cứng AI hiện nay có 3 thế lực chính: Xilinx, (Intel + Altera) và nVidia.
+		Phần lép vế thuộc về nVidia do tính linh hoạt không thể bằng FPGA của 2 ông kia.
+		Hiện nay Amazon EC2-F1 đã tích hợp Xilinx Virtex Ultra Scale+ còn Microsoft thì chọn Intel.
+		Google chọn giải pháp tự làm chip riêng TPU.
+		nVidia chỉ còn cửa cho dân bán chuyên tập nghiên cứu AI do tính phổ thông của nó.
+		CEO của nVidia nói rằng lựa chọn FPGA là một sai lầm nhưng sự thật ngược lại vì chỉ một bước nữa là cứng hóa thành ASIC và GPU sẽ hít khói về hiệu suất.
+		---Trở lại chủ đề chính thì giải pháp GPU trong AI sẽ không chết, chắc chắn là vậy vì tính phổ biến của nó, mua đâu cũng được trong khi FPGA chỉ dành cho dân chuyên vì còn phải có kiến thức thiết kế vi mạch VHDL/Verilog...
+		Tuy nhiên khi đưa giải pháp ra thị trường thì rất khó cho một datacenter toàn GPU nóng phừng phừng. Đó là lý do mà Amazon, Microsoft đã chọn FPGA khi tích hợp vào Server.
+
+		Google dùng TPU cho những việc chính của mình còn GPU cho khách thuê.
+		Amazon chắc chắn dùng Xilinx cho EC2 còn GPU tất nhiên là có như không phải chủ yếu.
+		DigitalOcean quá nhỏ bé.
+		Azure dùng FPGA của Intel, GPU sơ cua.
+		Tôi lúc mới học cũng dùng GPU vì dễ kiếm và dễ dùng, chỉ thế thôi.
+		Giờ đang thiết kế card PCI express dựa trên Virtex UltraScale+ của Xilinx vì GPU không đáp ứng được.
+		Về hiệu năng thì GPU không có cửa, để làm cùng một việc nó tốn năng lượng hơn, chả thế mà dân đào tiền ảo chuyển hết sang ASIC thay vì GPU.
+		Đó là ví dụ thực tế luôn, nếu mua được ASIC họ sẽ mua.
+
+	2. Bad comments: 
+		***(trái chiều): Cloud của Google , MS, Amazon, Digital Ocean, Alibaba vẫn đang dùng Nvidia, Các máy HPC trên thế giới đều dùng Nvidia, dân chuyên hay bán chuyên nghiên cứu đều dùng Nvidia. Cửa nào cho các ông kia khi mà bảo hiệu năng không đấu lại được
+
+II. Chủ quan- Quan điểm cá nhân:
+	1. Good:
+		--- Sở thích: Cũng là điện tử và lập trình => hợp với sở thích cá nhân
+		--- Ứng dụng: Có hợp với xu thế thời đại AI, ML, Big Data, DIP, Telecom,...
+		--- Community: Ít người làm => ít người cạnh tranh
+		--- Research: Có hướng nghiên cứu, học lên
+		--- Environment: Môi trường được làm development
+		--- Opportunity: Nếu được làm thì sẽ làm các công ty lớn
+
+	2. Not good:
+		--- Độ phức tạp: Cao
+		--- Community: Ít người làm => con đường hẹp
+		--- Địa điểm làm việc: Ở VN cũng có nhưng ít
+		--- Cơ hội xin vào các công ty lớn tại Nhật làm FPGA khó
+
+
+Phần 2: Desgin for embedded Image Processing on FPGAs - Chap 4: Design Process
+	Step 1: Problem specification: Clearly defines the problem - requirements analysis
+	Step 2: Algorithm development: Sequence of image processing operations
+	Step 3: Architecture Selection: Computational structure of the processors to execute the algorithm
+			1. Computational Architecure:
+				- Stream Processing: The main bottleneck of software-based image processing is that it is memory bound. 
+				An operation reads the pixel values from memory, processes them, and writes the results back to memory.
+					=> pipelined processing spends a lot of time
+				Stream Processing giảm tải các bước không cần thiết của phương pháp pipelined ví dụ lưu vào memory,	
+				- Systolic Arrays and Wavefront Processing: kiểu pipeline processing, khác ở chỗ nó data can flow in any direction 
+				===> ôn tập lại kiến thức pipeline
+				- Random Access Processing: (??? éo hiểu lắm) In contrast with stream processing, random access processing allows pixels to be accessed from anywhere in the memory as needed by an operation
+				- Massively Parallel Architectures: A massively parallel processor is able to process whole images in a few clock cycles,
+				regardless of the size of the image.
+				- Computational Architecture Design: 
+					+ Underlying algorithm needs to be changed or transformed to map efficiently to a hardware implementation
+					+ Design the computational architecture that is implied by the algorithm architecture
+			2. Partitioning between Hardware and Software: Phân tích hệ thống hardware và software, cái được cái mất và ứng dụng hardware trong các trường hợp khác nhau. Thường thì FPGA dùng trong các ứng dụng khi cần xử lý một lượng cực lớn dữ liệu trong 1 thời gian ngắn chứ không phải các ứng dụng xử lý tuần tự hoặc xử lý dynamically.
+			
+	Step 4: System implementation: Mapping the algorithm onto the selected architecture
+			The final stage within the design process is system implementation. This is where the image processing
+			algorithm is mapped onto the chosen hardware resources as defined by the architecture. The steps here
+			differ significantly from software-based design, where implementation primarily consists of coding the
+			algorithm. An FPGA-based implementation requires designing the specific hardware that will perform the
+			required image processing operations.
