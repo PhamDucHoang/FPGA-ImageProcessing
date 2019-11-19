@@ -1,0 +1,5 @@
+Những câu hỏi còn tồn đọng và về nhà có thể check lại với EDA:
+	1. Khi delay (ví dụ : #5) thì mạch sẽ thành như thế nào? dùng clock ở đâu để delay chính xác
+	2. khi cộng hằng số (ví dụ: i= a + 199) thì hằng số "199" được lưu vào một register trên RAM 
+	trước khi đem đi cộng đúng không? 
+	3. Mạch nhân, chia , trừ => how to implement??

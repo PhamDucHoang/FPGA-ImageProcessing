@@ -1,4 +1,4 @@
-Hôm nay muốn có thêm chút động lực để học và theo FPGA cho ra trò nên đầu tiên sẽ 
+﻿Hôm nay muốn có thêm chút động lực để học và theo FPGA cho ra trò nên đầu tiên sẽ 
 liệt kê các Adv/Dis của FPGA và tìm hiểu về tương lai của FPGA vs GPU
 
 Phần 1: Về tương lai FPGA
@@ -60,7 +60,8 @@ Phần 2: Desgin for embedded Image Processing on FPGAs - Chap 4: Design Process
 				- Computational Architecture Design: 
 					+ Underlying algorithm needs to be changed or transformed to map efficiently to a hardware implementation
 					+ Design the computational architecture that is implied by the algorithm architecture
-			2. Partitioning between Hardware and Software: Phân tích hệ thống hardware và software, cái được cái mất và ứng dụng hardware trong các trường hợp khác nhau. Thường thì FPGA dùng trong các ứng dụng khi cần xử lý một lượng cực lớn dữ liệu trong 1 thời gian ngắn chứ không phải các ứng dụng xử lý tuần tự hoặc xử lý dynamically.
+			2. Partitioning between Hardware and Software: Phân tích hệ thống hardware và software, cái được cái mất và ứng dụng hardware trong các trường hợp khác nhau. 
+				Thường thì FPGA dùng trong các ứng dụng khi cần xử lý một lượng cực lớn dữ liệu trong 1 thời gian ngắn chứ không phải các ứng dụng xử lý tuần tự hoặc xử lý dynamically.
 			
 	Step 4: System implementation: Mapping the algorithm onto the selected architecture
 			The final stage within the design process is system implementation. This is where the image processing
@@ -68,3 +69,4 @@ Phần 2: Desgin for embedded Image Processing on FPGAs - Chap 4: Design Process
 			differ significantly from software-based design, where implementation primarily consists of coding the
 			algorithm. An FPGA-based implementation requires designing the specific hardware that will perform the
 			required image processing operations.
+	Step 5:  Designing for Tuning and Debugging
