@@ -1,0 +1,12 @@
+Đọc lại basic để hiểu bản chất vấn đề và rà soát lại kiến thức đã học trong gần 1 tháng:
+Phần này chỉ ý nghĩa với Hoàng.
+I. FPGA
+A (FPGA): two-dimensional array of generic logic cells & programmable switches
+- có 2 loại cell: logic cell - macro cell
+- always block or initial block: procedural statements
+- trong if/else , switch/case thì các statement chạy procedural
+- nếu chỉ có một câu lệnh thì có thể bỏ begin và end
+- Think hardware, not C code. 
+
+Q/A: có phải cứ trong begin/end nó thực hiện procedural (chú ý trường hợp non-blocking assignment ko liên quan)
+	trong fork-join thực hiện concurrent
