@@ -1,0 +1,18 @@
+Processor 2 parts:
+1. Control Unit
+	- Circuitry that directs operations within a processor
+	- Control signal là để điều khiển các cục nhỏ trong processor: 
+		+ Reg
+		+ Dst
+		+ ALUSrc
+		+ Memto
+		+ Reg
+		+ Reg
+		+ Write
+		+ MemRead
+		+ Mem
+		+ Write
+		+ Branch
+		+ ALUOp
+		+ Jump
+		
